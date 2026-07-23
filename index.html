@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「いい文章を書こう」と思った瞬間、もう負けています。｜虜ライティング</title>
+<meta name="description" content="真面目に学んだ人ほど、読まれない。あなたが磨いてきた7つのライティングを、全部ひっくり返します。文章は「正しさ」ではなく「揺らぎ」で届く。">
+<meta property="og:title" content="「いい文章を書こう」と思った瞬間、もう負けています。">
+<meta property="og:description" content="真面目に学んだ人ほど、読まれない。7つのライティングの逆説——虜ライティング。">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖋</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f1e5;      /* 生成り */
+    --paper2:#efe8d8;
+    --sumi:#2b2620;       /* 墨 */
+    --sumi-soft:#4a443b;
+    --shu:#c73e3a;        /* 朱 */
+    --shu-deep:#a52f2c;
+    --line:rgba(43,38,32,.14);
+    --grid:rgba(43,38,32,.05);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;overflow-x:clip}
+  body{
+    font-family:"Shippori Mincho","Noto Serif JP",serif;
+    background:var(--paper);
+    color:var(--sumi);
+    line-height:2.1;
+    overflow-x:clip;
+    -webkit-font-smoothing:antialiased;
+  }
+  section{overflow-x:clip}
+  .sans{font-family:"Noto Sans JP",sans-serif}
+  .shu{color:var(--shu)}
+
+  /* ===== 原稿用紙の質感 ===== */
+  .paper-grid{
+    position:fixed;inset:0;z-index:-2;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 38px, var(--grid) 38px 39px),
+      repeating-linear-gradient(0deg, transparent 0 38px, var(--grid) 38px 39px),
+      radial-gradient(1200px 800px at 50% 0%, rgba(255,252,244,.9), transparent 70%),
+      linear-gradient(180deg,#f8f3e8,#f2ecdd 55%,#f6f1e5);
+  }
+  /* インクの染み */
+  .ink-stains{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5}
+  .ink-stains i{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle, rgba(43,38,32,.08), transparent 70%);
+  }
+  .ink-stains i:nth-child(1){left:4%;top:16%;width:130px;height:110px}
+  .ink-stains i:nth-child(2){right:6%;top:44%;width:170px;height:150px}
+  .ink-stains i:nth-child(3){left:12%;bottom:12%;width:110px;height:100px}
+
+  /* ===== ヘッダー ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:12px clamp(16px,4vw,40px);
+    background:rgba(246,241,229,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:clamp(14px,2.4vw,17px)}
+  .brand img{width:32px;height:32px;object-fit:contain}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-weight:700;text-decoration:none;cursor:pointer;border:none;border-radius:4px;
+    white-space:nowrap;transition:transform .18s,box-shadow .25s,filter .2s;
+    font-family:"Shippori Mincho",serif;position:relative;overflow:hidden;
+  }
+  .btn-shu{
+    color:#fdf9ef;letter-spacing:.1em;
+    background:linear-gradient(160deg,#d24a45,#c73e3a 55%,#a52f2c);
+    box-shadow:0 5px 16px rgba(199,62,58,.3),inset 0 1px 0 rgba(255,255,255,.18);
+  }
+  .btn-shu:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(199,62,58,.42);filter:brightness(1.04)}
+  .btn-shu::before{
+    content:"";position:absolute;top:0;left:-85%;width:45%;height:100%;
+    background:linear-gradient(105deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-20deg);animation:shine 5s ease-in-out infinite;
+  }
+  @keyframes shine{0%,60%{left:-85%}90%,100%{left:135%}}
+  .header-btn{padding:9px 20px;font-size:13px}
+
+  /* ===== ヒーロー ===== */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:110px clamp(18px,5vw,40px) 90px;
+  }
+  @keyframes inkIn{from{opacity:0;filter:blur(8px);transform:translateY(18px)}to{opacity:1;filter:blur(0);transform:none}}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:7px 22px;margin-bottom:34px;
+    font-size:12.5px;font-weight:700;letter-spacing:.28em;color:var(--sumi-soft);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    animation:inkIn 1.1s .1s both;
+  }
+  .hero h1{
+    font-size:clamp(27px,6vw,54px);font-weight:800;line-height:1.75;
+    letter-spacing:.04em;
+    animation:inkIn 1.3s .35s both;
+  }
+  .hero h1 .lose{
+    color:var(--shu);
+    text-decoration:underline;
+    text-decoration-color:rgba(199,62,58,.35);
+    text-underline-offset:10px;text-decoration-thickness:2px;
+  }
+  .hero-sub{
+    margin:30px auto 0;max-width:560px;
+    font-size:clamp(14px,2.4vw,17px);font-weight:600;color:var(--sumi-soft);line-height:2.3;
+    animation:inkIn 1.2s .7s both;
+  }
+  .hanko{
+    position:absolute;
+    top:clamp(96px,14vh,140px);right:clamp(14px,6vw,90px);
+    width:clamp(58px,9vw,84px);aspect-ratio:1;
+    display:grid;place-items:center;
+    color:#fdf6ec;font-weight:800;font-size:clamp(24px,4vw,36px);
+    background:radial-gradient(circle at 35% 30%,#d24a45,#a52f2c);
+    border-radius:10px;transform:rotate(8deg);
+    box-shadow:0 6px 18px rgba(165,47,44,.35);
+    animation:stamp .6s 1.15s both;
+  }
+  @keyframes stamp{
+    from{opacity:0;transform:rotate(8deg) scale(2.2)}
+    60%{opacity:1;transform:rotate(8deg) scale(.94)}
+    to{opacity:1;transform:rotate(8deg) scale(1)}
+  }
+  .hero-vertical{
+    position:absolute;left:clamp(10px,4vw,60px);top:50%;transform:translateY(-50%);
+    writing-mode:vertical-rl;letter-spacing:.4em;
+    font-size:12.5px;font-weight:600;color:var(--sumi-soft);opacity:.6;
+    animation:inkIn 1.4s 1s both;
+  }
+  .hero .cta-row{margin-top:44px;animation:inkIn 1.2s .95s both}
+  .hero-cta{padding:17px 46px;font-size:clamp(14.5px,2.7vw,17px)}
+  .cta-micro{margin-top:14px;font-size:11.5px;color:var(--sumi-soft);opacity:.75;animation:inkIn 1.2s 1.1s both}
+  .scroll-hint{
+    position:absolute;bottom:22px;left:50%;transform:translateX(-50%);
+    font-size:10px;letter-spacing:.3em;color:var(--sumi-soft);opacity:.7;
+  }
+  .scroll-hint::before{
+    content:"";display:block;width:1px;height:32px;margin:0 auto 8px;
+    background:linear-gradient(var(--sumi-soft),transparent);animation:drop 2s infinite;
+  }
+  @keyframes drop{0%{opacity:0;transform:scaleY(.2);transform-origin:top}50%{opacity:1}100%{opacity:0;transform:scaleY(1);transform-origin:top}}
+  @media(max-width:700px){.hero-vertical{display:none}.hanko{top:88px;right:14px}}
+
+  /* ===== セクション共通 ===== */
+  section{padding:clamp(70px,11vw,120px) clamp(18px,5vw,40px);position:relative}
+  .wrap{max-width:860px;margin:0 auto}
+  .eyebrow{
+    text-align:center;font-size:11.5px;font-weight:700;letter-spacing:.34em;
+    color:var(--shu);margin-bottom:16px;
+  }
+  .sec-title{
+    text-align:center;font-size:clamp(22px,4.6vw,34px);font-weight:800;line-height:1.8;
+    margin-bottom:14px;letter-spacing:.03em;
+  }
+  .sec-lead{text-align:center;color:var(--sumi-soft);font-size:clamp(13px,2.2vw,15px);margin-bottom:48px;font-weight:600}
+
+  /* ===== 共感 ===== */
+  .worries{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+  .worry{
+    display:flex;align-items:flex-start;gap:16px;
+    padding:20px 8px;border-bottom:1px dashed var(--line);
+    font-size:clamp(14px,2.4vw,16px);font-weight:600;line-height:2;
+  }
+  .worry:first-child{border-top:1px dashed var(--line)}
+  .worry .mark{color:var(--shu);flex-shrink:0;font-weight:800;margin-top:1px}
+  .empathy-close{
+    text-align:center;margin-top:56px;
+    font-size:clamp(18px,3.6vw,27px);font-weight:800;line-height:2;
+  }
+  .empathy-close .shu{border-bottom:2px solid rgba(199,62,58,.35);padding-bottom:4px}
+
+  /* ===== 7つの逆説 ===== */
+  .gyaku{max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .g-item{
+    display:flex;align-items:center;gap:clamp(12px,3vw,24px);
+    padding:18px clamp(16px,3.5vw,28px);
+    background:rgba(255,253,247,.7);
+    border:1px solid var(--line);border-radius:6px;
+    box-shadow:0 3px 14px rgba(43,38,32,.05);
+  }
+  .g-item .num{
+    font-size:clamp(17px,3vw,22px);font-weight:800;color:var(--shu);
+    flex-shrink:0;width:1.6em;text-align:center;
+  }
+  .g-item .old{
+    font-size:clamp(13px,2.3vw,15.5px);font-weight:600;color:var(--sumi-soft);
+    text-decoration:line-through;text-decoration-color:rgba(199,62,58,.7);text-decoration-thickness:2px;
+    flex:1;
+  }
+  .g-item .arrow{color:var(--shu);flex-shrink:0;font-weight:800}
+  .g-item .new{
+    font-size:clamp(13.5px,2.4vw,16px);font-weight:800;flex:1;text-align:right;
+  }
+  .gyaku-close{
+    text-align:center;margin-top:52px;
+    font-size:clamp(24px,5.4vw,40px);font-weight:800;letter-spacing:.1em;
+  }
+  .gyaku-close .shu{font-size:1.05em}
+
+  /* ===== ビフォーアフター ===== */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ba-card{
+    padding:30px clamp(20px,3.5vw,30px);border-radius:8px;position:relative;
+  }
+  .ba-card h3{font-size:clamp(14.5px,2.5vw,17px);font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .ba-card .tag{
+    font-family:"Noto Sans JP",sans-serif;font-size:11px;font-weight:700;
+    padding:3px 12px;border-radius:999px;letter-spacing:.06em;
+  }
+  .ba-card blockquote{
+    font-size:clamp(13px,2.2vw,14.5px);line-height:2.15;font-weight:500;
+    padding-left:14px;border-left:2px solid;
+  }
+  .ba-card .verdict{margin-top:18px;font-size:clamp(13px,2.3vw,15px);font-weight:800;text-align:right}
+  .ba-a{background:rgba(43,38,32,.05);border:1px solid var(--line)}
+  .ba-a h3{color:var(--sumi-soft)}
+  .ba-a .tag{background:rgba(43,38,32,.12);color:var(--sumi-soft)}
+  .ba-a blockquote{border-color:rgba(43,38,32,.25);color:var(--sumi-soft)}
+  .ba-a .verdict{color:var(--sumi-soft)}
+  .ba-b{
+    background:rgba(255,251,242,.92);border:1.5px solid rgba(199,62,58,.4);
+    box-shadow:0 10px 30px rgba(199,62,58,.12);
+  }
+  .ba-b .tag{background:rgba(199,62,58,.12);color:var(--shu)}
+  .ba-b blockquote{border-color:rgba(199,62,58,.5)}
+  .ba-b .verdict{color:var(--shu)}
+  .ba-close{
+    text-align:center;margin-top:48px;font-size:clamp(17px,3.4vw,25px);font-weight:800;line-height:2;
+  }
+
+  /* ===== 結論 ===== */
+  .conclusion{text-align:center}
+  .conclusion .big{
+    font-size:clamp(22px,4.8vw,38px);font-weight:800;line-height:2;letter-spacing:.04em;
+  }
+  .conclusion .big .shu{border-bottom:3px solid rgba(199,62,58,.3);padding-bottom:6px}
+  .conclusion .after{
+    margin-top:36px;font-size:clamp(13.5px,2.4vw,16px);color:var(--sumi-soft);
+    font-weight:600;line-height:2.4;
+  }
+
+  /* ===== CTA ===== */
+  .cta-final{text-align:center}
+  .cta-card{
+    max-width:640px;margin:0 auto;
+    padding:clamp(44px,8vw,64px) clamp(24px,5vw,52px);
+    background:rgba(255,253,247,.85);
+    border:1px solid var(--line);border-radius:8px;position:relative;
+    box-shadow:0 20px 50px rgba(43,38,32,.1);
+  }
+  .cta-card::before,.cta-card::after{
+    content:"";position:absolute;width:26px;height:26px;
+    border-color:rgba(199,62,58,.55);border-style:solid;
+  }
+  .cta-card::before{top:12px;left:12px;border-width:2px 0 0 2px}
+  .cta-card::after{bottom:12px;right:12px;border-width:0 2px 2px 0}
+  .cta-card h2{font-size:clamp(21px,4.4vw,32px);font-weight:800;line-height:1.9;margin-bottom:20px}
+  .cta-card .lead{font-size:clamp(13.5px,2.3vw,15.5px);color:var(--sumi-soft);font-weight:600;line-height:2.3;margin-bottom:34px}
+  .cta-big{padding:18px 52px;font-size:clamp(15px,2.8vw,18px)}
+  .cta-note{margin-top:16px;font-size:11.5px;color:var(--sumi-soft);opacity:.75}
+
+  /* ===== フッター ===== */
+  footer{
+    text-align:center;padding:52px 20px 42px;
+    border-top:1px solid var(--line);
+    background:rgba(239,232,216,.5);
+  }
+  .foot-brand{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:16px;margin-bottom:20px}
+  .foot-brand img{width:28px;height:28px;object-fit:contain}
+  .socials{display:flex;justify-content:center;gap:12px;margin-bottom:24px;flex-wrap:wrap}
+  .social{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    padding:10px 24px;border-radius:4px;font-size:13px;font-weight:700;color:var(--sumi);
+    border:1px solid var(--line);background:rgba(255,253,247,.7);
+    transition:transform .18s,box-shadow .25s;
+  }
+  .social:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(43,38,32,.12)}
+  .copyright{font-size:11.5px;color:var(--sumi-soft);letter-spacing:.08em}
+
+  /* ===== 演出（墨が滲むように） ===== */
+  .reveal{opacity:0;filter:blur(6px);transform:translateY(22px);transition:opacity 1s ease,filter 1s ease,transform 1s ease}
+  .reveal.show{opacity:1;filter:blur(0);transform:none}
+  .reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}
+
+  .progress{
+    position:fixed;top:0;left:0;height:2.5px;width:0%;z-index:200;
+    background:linear-gradient(90deg,#a52f2c,#d24a45);
+  }
+
+  @media(max-width:720px){
+    .ba{grid-template-columns:1fr}
+    .g-item{flex-wrap:wrap}
+    .g-item .new{flex-basis:100%;text-align:left;padding-left:2.4em}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important}
+    .reveal{opacity:1;filter:none;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="paper-grid"></div>
+<div class="ink-stains" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="progress" id="progressBar"></div>
+
+<!-- ===== ヘッダー ===== -->
+<header>
+  <div class="brand">
+    <img src="peaman.png" alt="" onerror="this.style.display='none'">
+    <span>ぴーまん野郎</span>
+  </div>
+  <a class="btn btn-shu header-btn" href="https://note.com/pman1212/n/nbdcb92e91212" target="_blank" rel="noopener">記事を読む</a>
+</header>
+
+<!-- ===== ヒーロー ===== -->
+<section class="hero">
+  <div class="hanko" aria-hidden="true">虜</div>
+  <p class="hero-vertical">読まれない文章の正体</p>
+
+  <span class="hero-badge">虜ライティング ｜ 7つの逆説</span>
+
+  <h1>
+    「いい文章を書こう」と<br>
+    思った瞬間、<br>
+    <span class="lose">もう負けています。</span>
+  </h1>
+
+  <p class="hero-sub">
+    真面目に学んだ人ほど、読まれない。<br>
+    あなたが磨いてきた7つのライティングを、<br>
+    全部、ひっくり返します。
+  </p>
+
+  <div class="cta-row">
+    <a class="btn btn-shu hero-cta" href="https://note.com/pman1212/n/nbdcb92e91212" target="_blank" rel="noopener">📖 記事を読む</a>
+  </div>
+  <p class="cta-micro sans">※ noteの記事に移動します</p>
+
+  <div class="scroll-hint sans">SCROLL</div>
+</section>
+
+<!-- ===== 共感 ===== -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal sans">あなたのことでは、ありませんか</p>
+    <h2 class="sec-title reveal">真面目に、学んできた。<br>それなのに——</h2>
+
+    <div class="worries">
+      <div class="worry reveal"><span class="mark">✒</span>読みやすい文章の書き方。タイトル術。PREP法。教材は、真面目に学んできた</div>
+      <div class="worry reveal d1"><span class="mark">✒</span>ノートを取って、メモして、自分の文章に取り入れてきた</div>
+      <div class="worry reveal d2"><span class="mark">✒</span>それなのに——スキは片手で数えられるほど。コメントは、ほぼ来ない</div>
+      <div class="worry reveal d1"><span class="mark">✒</span>「もっと学ばなきゃ」と、また新しい教材を買う。また書く。また、読まれない</div>
+    </div>
+
+    <p class="empathy-close reveal">
+      それは、努力が足りないからじゃない。<br>
+      <span class="shu">「いい文章」を、目指しているからです。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===== 7つの逆説 ===== -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal sans">七つの逆説</p>
+    <h2 class="sec-title reveal">世間の「コツ」を、<br>ひっくり返す。</h2>
+    <p class="sec-lead reveal">これまで信じてきたものが、否定される。その「えっ」が、入口です。</p>
+
+    <div class="gyaku">
+      <div class="g-item reveal"><span class="num">一</span><span class="old">いい話を書こう</span><span class="arrow">→</span><span class="new">弱さを、書け。</span></div>
+      <div class="g-item reveal"><span class="num">二</span><span class="old">丁寧に説明しよう</span><span class="arrow">→</span><span class="new">温度を、伝えろ。</span></div>
+      <div class="g-item reveal"><span class="num">三</span><span class="old">正しいことを書こう</span><span class="arrow">→</span><span class="new">本物を、書け。</span></div>
+      <div class="g-item reveal"><span class="num">四</span><span class="old">改行を増やそう</span><span class="arrow">→</span><span class="new">呼吸で、入れろ。</span></div>
+      <div class="g-item reveal"><span class="num">五</span><span class="old">分かりやすく書こう</span><span class="arrow">→</span><span class="new">引っかかりを、残せ。</span></div>
+      <div class="g-item reveal"><span class="num">六</span><span class="old">みんなに伝えよう</span><span class="arrow">→</span><span class="new">一人に、書け。</span></div>
+      <div class="g-item reveal"><span class="num">七</span><span class="old">完璧を目指そう</span><span class="arrow">→</span><span class="new">揺らぎを、残せ。</span></div>
+    </div>
+
+    <p class="gyaku-close reveal">全部、<span class="shu">逆</span>です。</p>
+  </div>
+</section>
+
+<!-- ===== ビフォーアフター ===== -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal sans">読み比べてください</p>
+    <h2 class="sec-title reveal">同じ「失敗談」でも、<br>ここまで変わる。</h2>
+
+    <div class="ba">
+      <div class="ba-card ba-a reveal">
+        <h3><span class="tag">A</span>いい話モード</h3>
+        <blockquote>
+          先日、大きな失敗をしました。それを通じて、失敗は成長の機会だと気づきました。私たちは、失敗を恐れて挑戦できないことが多いですが、本当は失敗こそが、私たちを強くしてくれるのです。
+        </blockquote>
+        <p class="verdict">——教訓を、押し付けている。</p>
+      </div>
+      <div class="ba-card ba-b reveal d1">
+        <h3><span class="tag">B</span>弱さモード</h3>
+        <blockquote>
+          先日、大きな失敗をしました。正直、まだ、立ち直れていません。「失敗は成長の機会」とか、よく言われるけど、そう思える時もあれば、ただただ落ち込む時もあります。今は、後者です。
+        </blockquote>
+        <p class="verdict">——感情を、共有している。</p>
+      </div>
+    </div>
+
+    <p class="ba-close reveal">
+      刺さったのは、<span class="shu">B</span>のはず。<br>
+      その理由の全部が、この記事に書いてあります。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 結論 ===== -->
+<section class="conclusion">
+  <div class="wrap">
+    <p class="eyebrow reveal sans">この記事を貫く、一行</p>
+    <p class="big reveal">
+      文章は、「正しさ」ではなく<br>
+      <span class="shu">「揺らぎ」</span>で届く。
+    </p>
+    <p class="after reveal">
+      整えた瞬間、文章から人間が消える。<br>
+      分からないまま。矛盾したまま。不完全なまま。<br>
+      ——それが、読者の心に届く。
+    </p>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-final">
+  <div class="cta-card reveal">
+    <h2>不完全なまま、<br><span class="shu">出す。</span></h2>
+    <p class="lead">
+      7つの逆説を知った瞬間から、あなたの文章は、別物になります。<br>
+      これまでの「正しい努力」を、手放す準備はいいですか。
+    </p>
+    <a class="btn btn-shu cta-big" href="https://note.com/pman1212/n/nbdcb92e91212" target="_blank" rel="noopener">📖 虜ライティングを読む</a>
+    <p class="cta-note sans">※ noteの記事に移動します</p>
+  </div>
+</section>
+
+<!-- ===== フッター ===== -->
+<footer>
+  <div class="foot-brand"><img src="peaman.png" alt="" onerror="this.style.display='none'">ぴーまん野郎</div>
+  <div class="socials">
+    <a class="social" href="https://note.com/pman1212" target="_blank" rel="noopener">📝 note</a>
+    <a class="social" href="https://www.threads.com/@pmen.1212" target="_blank" rel="noopener">🧵 Threads</a>
+    <a class="social" href="https://note.com/pman1212/n/nbdcb92e91212" target="_blank" rel="noopener">📖 記事を見る</a>
+  </div>
+  <p class="copyright sans">© 2026 ぴーまん野郎 All rights reserved.</p>
+</footer>
+
+<script>
+  // 墨が滲むように現れる
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); } });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 読み進みバー（朱の線）
+  const progressBar = document.getElementById('progressBar');
+  addEventListener('scroll', ()=>{
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progressBar.style.width = (max > 0 ? (scrollY / max) * 100 : 0) + '%';
+  }, {passive:true});
+</script>
+
+</body>
+</html>
