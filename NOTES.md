@@ -21,4 +21,7 @@
 
 ## つづきのメモ
 - [x] LP本体作成完了
-- [ ] セルフチェック → GitHub push → Vercel Import依頼
+- [x] セルフチェック済み（自己採点8.5点）: 画像/リンク/フォント/7逆説/朱印OK・overflow-x:clip対策済み。※プレビュー非表示のため見た目の最終確認は未（幅0で測定不可）→ユーザーの目視確認待ち
+- [x] GitHub push済み（repo: shimadakume-netizen/peaman-toriko-lp）
+- [x] Vercel公開完了: https://peaman-toriko-lp.vercel.app
+      ※今回は**Claude がユーザーのChromeを操作して Import→Deploy を代行**できた（claude-in-chrome MCP接続済み・Vercelログイン済みだったため）。今後のデプロイもこの方法でAI代行可能。以後の更新はgit pushだけで自動反映
